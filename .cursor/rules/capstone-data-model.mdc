@@ -1,0 +1,61 @@
+---
+description: Data model conventions for the AI Workforce Capacity Planner capstone
+alwaysApply: true
+---
+
+# Capstone Data Model Conventions
+
+## Proficiency Scale (1–5)
+
+Used on `employee_skills.proficiency` and `project_requirements.min_proficiency`.
+
+| Level | Label | Meaning |
+|---|---|---|
+| 1 | Beginner | Tutorial-level. Not ready for independent production work. |
+| 2 | Familiar | Has done real work with it, needs guidance on complex tasks. |
+| 3 | Proficient | Works independently on standard problems. Can own a feature. |
+| 4 | Advanced | Makes architectural decisions, handles complexity, reviews others. |
+| 5 | Expert | Go-to person. Designs systems, mentors others, spots non-obvious failure modes. |
+
+## Setting `min_proficiency` on Project Requirements
+
+| Scenario | min_proficiency |
+|---|---|
+| This skill IS the core of the project — wrong decisions here sink it | 4 |
+| Skill is load-bearing but a proficient engineer can handle it | 3 |
+| Supporting role — just can't be starting from zero | 2 |
+| Never use in requirements | 5 |
+
+## Headcount on Requirements
+
+`headcount_needed` = number of people at or above `min_proficiency` required. One person can satisfy multiple skill requirements simultaneously. `headcount: 2` means the workload or risk requires two qualified people, not one.
+
+## Gap Types (Three Distinct Cases)
+
+Always distinguish these in LLM output — they require different recommendations:
+
+- **True skill gap**: No employee meets `min_proficiency` for a required skill → needs hiring or training
+- **Availability gap**: Qualified employees exist but are fully allocated before the project starts → timing problem, not a skills problem
+- **Coverage risk**: Only one person qualifies for a critical skill → single point of failure even if no gap today
+
+## Allocation Model
+
+- `allocation_pct` on `allocations`: 0–100% of an employee's time on a project
+- An employee is "available" for a new project if their total allocation across all active projects leaves headroom, and their current commitments end before the new project starts
+- Always check `time_off` alongside `allocations` when computing availability
+
+## Core Tables
+
+```
+employees           id, name, role, department, level, employment_type, start_date
+skills              id, name, category (technical/domain/leadership)
+employee_skills     employee_id, skill_id, proficiency (1-5), years_exp
+projects            id, name, status (active/pipeline/completed), priority, start_date, end_date
+project_requirements project_id, skill_id, min_proficiency, headcount_needed, start_date, end_date
+allocations         id, employee_id, project_id, allocation_pct, start_date, end_date
+time_off            employee_id, start_date, end_date, type
+```
+
+## Vector Store Documents
+
+Employee profiles and project descriptions are embedded as **whole documents** (not chunked). Chunking loses coherence for self-contained profile bios. Metadata fields to always include: `type`, `employee_id` or `project_id`, `department`, `level`, `status`.

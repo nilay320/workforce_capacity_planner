@@ -1,0 +1,72 @@
+---
+description: Project context, architecture, and conventions for the AI Workforce Capacity Planner capstone
+alwaysApply: true
+---
+
+# AI Workforce Capacity Planner — Capstone
+
+## Problem
+
+Engineering leaders (VPs, team leads) at tech companies lack real-time, queryable visibility into workforce capacity. Forecasting who is available, who has the right skills, and where gaps will emerge across a project pipeline is currently a manual, spreadsheet-driven process.
+
+## Target Users
+
+VP of Engineering and team leads at tech companies. Questions are natural language. Output must be specific and actionable — names, dates, numbers, not generic advice.
+
+## Scope
+
+- **In scope**: Project staffing recommendations, skill gap analysis, capacity checks, headcount forecasting, what-if scenario analysis, project monitoring as scope changes
+- **Out of scope**: Hiring decisions, performance management, compensation
+
+## Three Iterations (Paradigm Progression)
+
+| Iteration | Paradigm | Key Addition | Key Limitation |
+|---|---|---|---|
+| 1 | Workflow Agent | Query classification + routing + domain prompt templates | Not grounded in org data |
+| 2 | Workflow Agent + Retrieval | ChromaDB (employee profiles) + SQLite (allocations/projects) | Reactive — one question at a time |
+| 3 | Autonomous Agent | Goal decomposition, tool-calling loop, episodic memory | Higher latency and cost |
+
+## Tech Stack
+
+- **Orchestration**: LangGraph (StateGraph + TypedDict state)
+- **LLM**: `gpt-4o-mini` (default), `gpt-4o` for complex planning synthesis
+- **Embeddings**: `text-embedding-3-small`
+- **Vector store**: ChromaDB (persistent on disk)
+- **Structured data**: SQLite (queried via LangChain `create_sql_query_chain`)
+- **Frontend**: Streamlit (demo UI)
+
+## Query Classification (4 Types + Out of Scope)
+
+| Type | Example |
+|---|---|
+| `staffing_gap` | "Where are we short-staffed for Q4?" |
+| `skill_match` | "Who has Kafka experience and is available?" |
+| `headcount_forecast` | "How many engineers do we need for a 6-month rebuild?" |
+| `capacity_check` | "Is anyone over-allocated right now?" |
+| `out_of_scope` | "Can you write a job description?" → graceful rejection |
+
+## Routing Logic (Iteration 2+)
+
+- `skill_match` and freeform `staffing_gap` → ChromaDB (semantic search on employee profiles)
+- `capacity_check` and `headcount_forecast` → SQLite (aggregations on allocations/projects)
+- Questions needing both → hybrid (ChromaDB candidates → SQL availability filter)
+
+## File Structure
+
+```
+code/capstone/
+  data.py              # mock data as Python dicts (single source of truth)
+  prompts.py           # system prompts and formatting functions
+  planner.py           # LangGraph graph definition
+  main.py              # CLI entry point
+  eval/
+    test_questions.py  # 10-15 labeled test questions + expected outputs
+```
+
+## LLM Output Requirements
+
+Every response must:
+1. Use specific names and numbers from the data — never generic advice
+2. Distinguish gap type: true skill gap vs. availability gap vs. coverage risk
+3. Cite the source (employee name, project, allocation dates)
+4. Include a RISKS section even when a match is found
