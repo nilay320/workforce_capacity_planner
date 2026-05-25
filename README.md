@@ -19,6 +19,36 @@ The system reasons over a mock org dataset — 12 employees, 6 projects, skill i
 
 ---
 
+## Architecture (v0 — Context Stuffing)
+
+```mermaid
+flowchart TD
+    UI["User Question\n(Streamlit UI or CLI)"]
+
+    subgraph graph["LangGraph Workflow"]
+        LC["load_context node\n─────────────────\n• Format employee profiles\n• Format project requirements\n• Pre-compute available_from dates"]
+        REC["recommend node\n─────────────────\n• LLM call — gpt-4o-mini\n• Apply gap type rules\n• Apply FTE + ranking rules"]
+    end
+
+    subgraph data["data/ — Mock Org Dataset"]
+        D1["employees.json\nskills.json\nemployee_skills.json"]
+        D2["projects.json\nproject_requirements.json\nallocations.json\ntime_off.json"]
+    end
+
+    PROMPT["System Prompt\n─────────────────\n• Gap type labels\n• FTE semantics\n• Ranking criteria\n• Seniority fit rules"]
+
+    OUT["Structured Response\n─────────────────\nRECOMMENDED TEAM\nSKILL GAPS\nRISKS"]
+
+    UI --> LC
+    D1 --> LC
+    D2 --> LC
+    LC --> REC
+    PROMPT --> REC
+    REC --> OUT
+```
+
+---
+
 ## Setup
 
 **1. Clone the repo**
