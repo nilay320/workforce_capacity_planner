@@ -161,6 +161,7 @@ with st.sidebar:
         options=list(project_options.keys()),
         help="Scope your questions to one project, or ask across all.",
     )
+    st.caption("🟢 Active · 🟡 Pipeline")
     selected_project_id = project_options[selected_label]
 
     if selected_project_id:
