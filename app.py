@@ -10,6 +10,7 @@ Deploy: push to main → Streamlit Cloud auto-deploys.
 import streamlit as st
 from planner import ask
 from data import PROJECTS, EMPLOYEES, ALLOCATIONS
+from prompts import GAP_LABELS
 
 # ---------------------------------------------------------------------------
 # Page config — must be first Streamlit call
@@ -116,13 +117,13 @@ div[data-testid="stMetric"] label {
 
 def colorize_response(text: str) -> str:
     """Replace gap type labels with colored HTML badges."""
-    replacements = {
-        "[COVERED]":          '<span class="badge-covered">✅ COVERED</span>',
-        "[COVERAGE RISK]":    '<span class="badge-risk">⚠️ COVERAGE RISK</span>',
-        "[TRUE SKILL GAP]":   '<span class="badge-gap">🔴 TRUE SKILL GAP</span>',
-        "[AVAILABILITY GAP]": '<span class="badge-avail">🔵 AVAILABILITY GAP</span>',
+    badge_map = {
+        GAP_LABELS["COVERED"]:          '<span class="badge-covered">✅ COVERED</span>',
+        GAP_LABELS["COVERAGE_RISK"]:    '<span class="badge-risk">⚠️ COVERAGE RISK</span>',
+        GAP_LABELS["TRUE_SKILL_GAP"]:   '<span class="badge-gap">🔴 TRUE SKILL GAP</span>',
+        GAP_LABELS["AVAILABILITY_GAP"]: '<span class="badge-avail">🔵 AVAILABILITY GAP</span>',
     }
-    for label, badge in replacements.items():
+    for label, badge in badge_map.items():
         text = text.replace(label, badge)
     return text
 

@@ -19,6 +19,21 @@ The system reasons over a mock org dataset — 12 employees, 6 projects, skill i
 
 ---
 
+## Gap type labels
+
+Every response classifies each required skill using one of four labels:
+
+| Label | Meaning | Suggested action |
+|---|---|---|
+| `[COVERED]` | At least two qualified, available people exist | Proceed — assign best fit |
+| `[AVAILABILITY GAP]` | Qualified people exist but are fully allocated or on leave | Reschedule, stagger start, or wait for commitments to end |
+| `[COVERAGE RISK]` | Only one person meets the required proficiency — single point of failure | Document the dependency; add redundancy before the project goes live |
+| `[TRUE SKILL GAP]` | Nobody on the team meets the required proficiency level | Hire, upskill, or bring in a contractor |
+
+Labels are defined as constants in `prompts.py` (`GAP_LABELS`) and used by the system prompt, the UI badge colorizer, and the eval harness — one source of truth.
+
+---
+
 ## Architecture (v0 — Context Stuffing)
 
 ```mermaid
@@ -69,10 +84,11 @@ source .venv/bin/activate      # macOS / Linux
 uv pip install -r requirements.txt
 ```
 
-**4. Set up your API key**
+**4. Set up environment variables**
 ```bash
 cp .env.example .env
-# Edit .env and add your OpenAI API key
+# Required:       OPENAI_API_KEY
+# For evals only: ARIZE_API_KEY, ARIZE_SPACE_ID
 ```
 
 ---
@@ -104,6 +120,35 @@ python -m streamlit run app.py
 
 ---
 
+## Evaluation
+
+The `eval/` directory contains an Arize experiment harness with 10 test cases and 4 evaluators:
+
+| Evaluator | Type | What it checks |
+|---|---|---|
+| `answer_relevance` | LLM judge | Does the response address the question? |
+| `specificity` | LLM judge | Does it name actual people, not give generic advice? |
+| `gap_label_recall` | Code-based | Are the correct gap type labels present? |
+| `name_recall` | Code-based | Are the expected employee names mentioned? |
+
+**Baseline results (v1 dataset):** answer_relevance 1.00 · specificity 1.00 · gap_label_recall 0.80 · name_recall 1.00
+
+**Run evals** (requires `ARIZE_API_KEY` and `ARIZE_SPACE_ID` in `.env`):
+```bash
+# First run — creates a new Arize dataset from eval/test_cases.py
+python eval/evaluate.py --dataset-name workforce-planner-eval-v1
+
+# Re-run against the same dataset (new experiment, same rows)
+python eval/evaluate.py --dataset-name workforce-planner-eval-v1 --reuse-dataset
+
+# Changed test case expectations? Use a new dataset version
+python eval/evaluate.py --dataset-name workforce-planner-eval-v2
+```
+
+When using `--reuse-dataset`, expected labels/names come from the Arize-stored rows, not the local `test_cases.py`. Use a new versioned dataset name whenever you update expectations.
+
+---
+
 ## Project structure
 
 ```
@@ -124,6 +169,10 @@ python -m streamlit run app.py
 │
 ├── .streamlit/
 │   └── config.toml         # UI theme (colors, font)
+│
+├── eval/
+│   ├── test_cases.py       # 10 test cases with expected labels + names
+│   └── evaluate.py         # Arize experiment runner (4 evaluators)
 │
 ├── .cursor/rules/          # Cursor AI rules (always applied in this repo)
 ├── requirements.txt

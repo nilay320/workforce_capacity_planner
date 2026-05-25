@@ -82,6 +82,18 @@ RECOMMENDATION_PROMPT = ChatPromptTemplate.from_messages([
 # Context formatters
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# Gap type label constants — single source of truth used by the system prompt,
+# the UI badge colorizer (app.py), and the eval harness (eval/test_cases.py).
+# ---------------------------------------------------------------------------
+
+GAP_LABELS: dict[str, str] = {
+    "COVERED":          "[COVERED]",
+    "AVAILABILITY_GAP": "[AVAILABILITY GAP]",
+    "COVERAGE_RISK":    "[COVERAGE RISK]",
+    "TRUE_SKILL_GAP":   "[TRUE SKILL GAP]",
+}
+
 PROFICIENCY_LABELS = {
     1: "Beginner",
     2: "Familiar",
