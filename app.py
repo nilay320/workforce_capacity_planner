@@ -151,8 +151,10 @@ with st.sidebar:
     st.divider()
 
     # Project scope selector
+    status_icon = {"active": "🟢", "pipeline": "🟡", "completed": "⚪"}
     project_options = {"🌐  All Projects": None} | {
-        f"{p['id']} — {p['name']}": p["id"] for p in PROJECTS
+        f"{status_icon.get(p['status'], '⚪')} {p['id']} — {p['name']}": p["id"]
+        for p in PROJECTS
     }
     selected_label = st.selectbox(
         "Project scope",
