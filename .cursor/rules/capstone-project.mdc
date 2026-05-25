@@ -53,14 +53,26 @@ VP of Engineering and team leads at tech companies. Questions are natural langua
 
 ## File Structure
 
+This is the repo root. All paths are relative to it.
+
 ```
-code/capstone/
-  data.py              # mock data as Python dicts (single source of truth)
-  prompts.py           # system prompts and formatting functions
+./
+  app.py               # Streamlit UI
   planner.py           # LangGraph graph definition
+  prompts.py           # system prompts and formatting functions
+  data.py              # JSON loader + lookup helpers
   main.py              # CLI entry point
+  data/                # mock org dataset (JSON files — edit to change org data)
+    employees.json
+    skills.json
+    employee_skills.json
+    projects.json
+    project_requirements.json
+    allocations.json
+    time_off.json
   eval/
-    test_questions.py  # 10-15 labeled test questions + expected outputs
+    test_cases.py      # labeled test questions + expected outputs
+  .cursor/rules/       # Cursor AI rules (always applied in this repo)
 ```
 
 ## LLM Output Requirements

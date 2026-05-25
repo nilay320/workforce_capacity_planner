@@ -4,3 +4,5 @@ __pycache__/
 chroma_db/
 *.db
 .DS_Store
+.venv/
+.streamlit/secrets.toml

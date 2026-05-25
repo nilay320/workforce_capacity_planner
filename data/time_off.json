@@ -1,0 +1,6 @@
+[
+  { "employee_id": "E001", "start_date": "2026-07-14", "end_date": "2026-07-25", "type": "vacation" },
+  { "employee_id": "E004", "start_date": "2026-06-01", "end_date": "2026-08-31", "type": "parental" },
+  { "employee_id": "E008", "start_date": "2026-08-04", "end_date": "2026-08-08", "type": "vacation" },
+  { "employee_id": "E003", "start_date": "2026-09-01", "end_date": "2026-09-05", "type": "vacation" }
+]

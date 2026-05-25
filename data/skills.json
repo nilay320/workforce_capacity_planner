@@ -1,0 +1,22 @@
+[
+  { "id": "S001", "name": "Python",              "category": "technical" },
+  { "id": "S002", "name": "Machine Learning",    "category": "technical" },
+  { "id": "S003", "name": "PyTorch",             "category": "technical" },
+  { "id": "S004", "name": "Kubernetes",          "category": "technical" },
+  { "id": "S005", "name": "React",               "category": "technical" },
+  { "id": "S006", "name": "PostgreSQL",          "category": "technical" },
+  { "id": "S007", "name": "Apache Kafka",        "category": "technical" },
+  { "id": "S008", "name": "dbt",                 "category": "technical" },
+  { "id": "S009", "name": "Terraform",           "category": "technical" },
+  { "id": "S010", "name": "FastAPI",             "category": "technical" },
+  { "id": "S011", "name": "Healthcare Domain",   "category": "domain" },
+  { "id": "S012", "name": "FinTech Domain",      "category": "domain" },
+  { "id": "S013", "name": "Real-time Systems",   "category": "technical" },
+  { "id": "S014", "name": "Team Leadership",     "category": "leadership" },
+  { "id": "S015", "name": "Technical Mentoring", "category": "leadership" },
+  { "id": "S016", "name": "LLM / Generative AI", "category": "technical" },
+  { "id": "S017", "name": "Apache Spark",        "category": "technical" },
+  { "id": "S018", "name": "Data Modeling",       "category": "technical" },
+  { "id": "S019", "name": "Backend Engineering", "category": "technical" },
+  { "id": "S020", "name": "WebSocket / Frontend","category": "technical" }
+]

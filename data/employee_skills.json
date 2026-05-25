@@ -1,0 +1,63 @@
+[
+  { "employee_id": "E001", "skill_id": "S001", "proficiency": 5, "years_exp": 6 },
+  { "employee_id": "E001", "skill_id": "S002", "proficiency": 5, "years_exp": 5 },
+  { "employee_id": "E001", "skill_id": "S003", "proficiency": 4, "years_exp": 3 },
+  { "employee_id": "E001", "skill_id": "S016", "proficiency": 4, "years_exp": 2 },
+  { "employee_id": "E001", "skill_id": "S011", "proficiency": 3, "years_exp": 2 },
+  { "employee_id": "E001", "skill_id": "S014", "proficiency": 3, "years_exp": 2 },
+
+  { "employee_id": "E002", "skill_id": "S001", "proficiency": 4, "years_exp": 4 },
+  { "employee_id": "E002", "skill_id": "S006", "proficiency": 4, "years_exp": 4 },
+  { "employee_id": "E002", "skill_id": "S010", "proficiency": 4, "years_exp": 3 },
+  { "employee_id": "E002", "skill_id": "S007", "proficiency": 3, "years_exp": 2 },
+  { "employee_id": "E002", "skill_id": "S019", "proficiency": 4, "years_exp": 4 },
+
+  { "employee_id": "E003", "skill_id": "S001", "proficiency": 4, "years_exp": 3 },
+  { "employee_id": "E003", "skill_id": "S002", "proficiency": 3, "years_exp": 2 },
+  { "employee_id": "E003", "skill_id": "S018", "proficiency": 4, "years_exp": 3 },
+  { "employee_id": "E003", "skill_id": "S011", "proficiency": 4, "years_exp": 3 },
+
+  { "employee_id": "E004", "skill_id": "S004", "proficiency": 5, "years_exp": 5 },
+  { "employee_id": "E004", "skill_id": "S009", "proficiency": 5, "years_exp": 4 },
+  { "employee_id": "E004", "skill_id": "S013", "proficiency": 4, "years_exp": 3 },
+
+  { "employee_id": "E005", "skill_id": "S005", "proficiency": 5, "years_exp": 4 },
+  { "employee_id": "E005", "skill_id": "S020", "proficiency": 4, "years_exp": 3 },
+
+  { "employee_id": "E006", "skill_id": "S001", "proficiency": 4, "years_exp": 7 },
+  { "employee_id": "E006", "skill_id": "S006", "proficiency": 5, "years_exp": 6 },
+  { "employee_id": "E006", "skill_id": "S007", "proficiency": 5, "years_exp": 4 },
+  { "employee_id": "E006", "skill_id": "S013", "proficiency": 5, "years_exp": 4 },
+  { "employee_id": "E006", "skill_id": "S019", "proficiency": 4, "years_exp": 7 },
+
+  { "employee_id": "E007", "skill_id": "S001", "proficiency": 3, "years_exp": 1 },
+  { "employee_id": "E007", "skill_id": "S002", "proficiency": 2, "years_exp": 1 },
+  { "employee_id": "E007", "skill_id": "S016", "proficiency": 3, "years_exp": 1 },
+
+  { "employee_id": "E008", "skill_id": "S001", "proficiency": 5, "years_exp": 6 },
+  { "employee_id": "E008", "skill_id": "S002", "proficiency": 5, "years_exp": 5 },
+  { "employee_id": "E008", "skill_id": "S017", "proficiency": 4, "years_exp": 4 },
+  { "employee_id": "E008", "skill_id": "S012", "proficiency": 5, "years_exp": 4 },
+  { "employee_id": "E008", "skill_id": "S015", "proficiency": 4, "years_exp": 3 },
+
+  { "employee_id": "E009", "skill_id": "S001", "proficiency": 4, "years_exp": 4 },
+  { "employee_id": "E009", "skill_id": "S008", "proficiency": 5, "years_exp": 3 },
+  { "employee_id": "E009", "skill_id": "S017", "proficiency": 4, "years_exp": 3 },
+  { "employee_id": "E009", "skill_id": "S018", "proficiency": 4, "years_exp": 4 },
+  { "employee_id": "E009", "skill_id": "S007", "proficiency": 2, "years_exp": 0 },
+
+  { "employee_id": "E010", "skill_id": "S001", "proficiency": 5, "years_exp": 8 },
+  { "employee_id": "E010", "skill_id": "S014", "proficiency": 5, "years_exp": 4 },
+  { "employee_id": "E010", "skill_id": "S015", "proficiency": 5, "years_exp": 4 },
+  { "employee_id": "E010", "skill_id": "S019", "proficiency": 5, "years_exp": 8 },
+
+  { "employee_id": "E011", "skill_id": "S004", "proficiency": 4, "years_exp": 3 },
+  { "employee_id": "E011", "skill_id": "S009", "proficiency": 4, "years_exp": 3 },
+
+  { "employee_id": "E012", "skill_id": "S005", "proficiency": 4, "years_exp": 5 },
+  { "employee_id": "E012", "skill_id": "S001", "proficiency": 4, "years_exp": 5 },
+  { "employee_id": "E012", "skill_id": "S010", "proficiency": 4, "years_exp": 4 },
+  { "employee_id": "E012", "skill_id": "S006", "proficiency": 4, "years_exp": 4 },
+  { "employee_id": "E012", "skill_id": "S019", "proficiency": 4, "years_exp": 5 },
+  { "employee_id": "E012", "skill_id": "S020", "proficiency": 3, "years_exp": 2 }
+]

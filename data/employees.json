@@ -1,0 +1,134 @@
+[
+  {
+    "id": "E001",
+    "name": "Sarah Chen",
+    "role": "ML Engineer",
+    "department": "Data Science",
+    "level": "senior",
+    "employment_type": "FTE",
+    "start_date": "2021-03-15",
+    "location": "San Francisco",
+    "bio": "Sarah Chen is a Senior ML Engineer with 6 years of Python experience and 5 years building production machine learning systems. She leads the AI Recommendation Engine project and has deep expertise in PyTorch, model training pipelines, and deploying models at scale. Sarah has been working on LLMs and generative AI since early 2024, building internal prompt tooling and fine-tuning pipelines. She has mentored two junior engineers and is the go-to for ML architectural decisions. Her background includes a stint at a healthcare AI startup, giving her sensitivity to model fairness and clinical data constraints."
+  },
+  {
+    "id": "E002",
+    "name": "Marcus Johnson",
+    "role": "Backend Engineer",
+    "department": "Engineering",
+    "level": "mid",
+    "employment_type": "FTE",
+    "start_date": "2022-07-01",
+    "location": "Remote",
+    "bio": "Marcus Johnson is a Mid-level Backend Engineer with 4 years of experience building scalable APIs and data services. He is highly proficient in Python and PostgreSQL, and has built several microservices using FastAPI. Marcus has working knowledge of Apache Kafka and has contributed to the streaming data ingestion layer on the Data Platform Migration project. He is known for writing clean, well-tested code and has strong opinions about API contract design. Works fully remote."
+  },
+  {
+    "id": "E003",
+    "name": "Priya Patel",
+    "role": "Data Scientist",
+    "department": "Data Science",
+    "level": "mid",
+    "employment_type": "FTE",
+    "start_date": "2023-01-10",
+    "location": "New York",
+    "bio": "Priya Patel is a Mid-level Data Scientist with 3 years of experience in applied ML and data analysis. She has strong Python skills and is proficient in data modeling and statistical analysis. Priya has domain expertise in healthcare data, having worked on patient outcome prediction models at her previous role. She is currently contributing to the AI Recommendation Engine project on feature engineering."
+  },
+  {
+    "id": "E004",
+    "name": "Alex Rodriguez",
+    "role": "DevOps Engineer",
+    "department": "Infrastructure",
+    "level": "senior",
+    "employment_type": "FTE",
+    "start_date": "2020-11-20",
+    "location": "San Francisco",
+    "bio": "Alex Rodriguez is a Senior DevOps Engineer with 5+ years of experience in infrastructure automation and platform engineering. He is an expert in Kubernetes cluster management and Terraform for infrastructure-as-code. Alex has experience designing high-availability architectures for real-time systems and has built the current CI/CD pipeline. Note: Alex is on parental leave through August 2026."
+  },
+  {
+    "id": "E005",
+    "name": "Jamie Kim",
+    "role": "Frontend Engineer",
+    "department": "Engineering",
+    "level": "mid",
+    "employment_type": "FTE",
+    "start_date": "2022-09-05",
+    "location": "Chicago",
+    "bio": "Jamie Kim is a Mid-level Frontend Engineer with 4 years of React experience. She has built complex real-time dashboard UIs with WebSocket integrations and is comfortable with data visualization libraries. Jamie contributed the frontend layer for the AI Recommendation Engine, building the results UI with live recommendation updates. She prefers component-driven development and has strong UX sensibilities."
+  },
+  {
+    "id": "E006",
+    "name": "David Park",
+    "role": "Backend Engineer",
+    "department": "Engineering",
+    "level": "senior",
+    "employment_type": "FTE",
+    "start_date": "2019-04-01",
+    "location": "San Francisco",
+    "bio": "David Park is a Senior Backend Engineer with 7 years of experience, specializing in high-throughput real-time data systems. He is an expert in Apache Kafka, having designed and operated event-driven architectures processing millions of messages per day. David also has deep experience with PostgreSQL query optimization and schema design for large-scale OLTP workloads. He is one of the few engineers on the team who has hands-on experience with both streaming and batch paradigms and understands back-pressure handling, consumer group management, and exactly-once semantics."
+  },
+  {
+    "id": "E007",
+    "name": "Tom Wilson",
+    "role": "ML Engineer",
+    "department": "Data Science",
+    "level": "junior",
+    "employment_type": "FTE",
+    "start_date": "2024-02-01",
+    "location": "Remote",
+    "bio": "Tom Wilson is a Junior ML Engineer in his first engineering role, having joined from a data science bootcamp. He has working Python skills and basic knowledge of machine learning fundamentals. Tom has been exploring LLMs and prompt engineering and is enthusiastic about generative AI. He needs close mentorship and is not yet ready for independent ownership of complex ML systems."
+  },
+  {
+    "id": "E008",
+    "name": "Aisha Okafor",
+    "role": "Data Scientist",
+    "department": "Data Science",
+    "level": "senior",
+    "employment_type": "FTE",
+    "start_date": "2020-06-15",
+    "location": "New York",
+    "bio": "Aisha Okafor is a Senior Data Scientist with 6 years of experience in applied ML, with particular depth in financial services and risk modeling. She has built credit scoring, fraud detection, and churn prediction systems for FinTech clients. Aisha is proficient in PySpark for large-scale data processing and has extensive feature engineering experience on tabular datasets. She runs weekly ML office hours for junior data scientists and holds a Master's in Statistics from Columbia."
+  },
+  {
+    "id": "E009",
+    "name": "Nina Sharma",
+    "role": "Data Engineer",
+    "department": "Data Science",
+    "level": "mid",
+    "employment_type": "FTE",
+    "start_date": "2022-03-20",
+    "location": "Remote",
+    "bio": "Nina Sharma is a Mid-level Data Engineer with expertise in modern data stack tooling, particularly dbt for transformation and Spark for large-scale processing. She is the primary owner of the data modeling layer on the Data Platform Migration project, having designed the medallion architecture from scratch. Nina has introduced dbt tests and data quality checks that caught three critical pipeline regressions before production. She is actively self-studying Kafka and interested in expanding into real-time streaming, but has no production Kafka experience yet."
+  },
+  {
+    "id": "E010",
+    "name": "Lisa Zhang",
+    "role": "Staff Engineer",
+    "department": "Engineering",
+    "level": "staff",
+    "employment_type": "FTE",
+    "start_date": "2018-08-10",
+    "location": "San Francisco",
+    "bio": "Lisa Zhang is a Staff Engineer with 8 years of experience who serves as the technical anchor for the Engineering org. She is deeply experienced in Python and has led architecture reviews across backend, data, and ML stacks. Lisa has a talent for identifying cross-team dependencies and de-risking complex multi-quarter initiatives. She currently provides light oversight on the AI Recommendation Engine at 20% allocation and is a key candidate for leading a new high-complexity project. She built the internal engineering mentorship program."
+  },
+  {
+    "id": "E011",
+    "name": "Carlos Mendez",
+    "role": "DevOps Engineer",
+    "department": "Infrastructure",
+    "level": "mid",
+    "employment_type": "contractor",
+    "start_date": "2024-05-01",
+    "location": "Remote",
+    "bio": "Carlos Mendez is a Mid-level DevOps contractor with 3 years of experience in Kubernetes and Terraform. He joined to support the Security & Compliance Audit project and has been fully allocated since May 2024. Carlos is reliable and produces clean infrastructure code. As a contractor, his engagement terms are reviewed quarterly — his current contract runs through July 2026."
+  },
+  {
+    "id": "E012",
+    "name": "Ryan Murphy",
+    "role": "Full Stack Engineer",
+    "department": "Engineering",
+    "level": "senior",
+    "employment_type": "FTE",
+    "start_date": "2021-01-15",
+    "location": "Austin",
+    "bio": "Ryan Murphy is a Senior Full Stack Engineer with 5 years of experience building web applications end-to-end. He is proficient in React on the frontend and Python with FastAPI on the backend. Ryan has solid PostgreSQL skills and has built several internal tools that are now used org-wide. He is currently between major project assignments and has significant available bandwidth."
+  }
+]

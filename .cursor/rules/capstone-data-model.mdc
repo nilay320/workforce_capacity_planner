@@ -28,7 +28,17 @@ Used on `employee_skills.proficiency` and `project_requirements.min_proficiency`
 
 ## Headcount on Requirements
 
-`headcount_needed` = number of people at or above `min_proficiency` required. One person can satisfy multiple skill requirements simultaneously. `headcount: 2` means the workload or risk requires two qualified people, not one.
+`headcount_needed` is expressed in **FTE (full-time equivalents)**. It represents how much of a person's time the project needs for this skill area — not a raw count of people.
+
+| Value | Meaning |
+|---|---|
+| 1.0 | One person full-time on this skill |
+| 0.5 | One person at 50% of their time |
+| 0.8 | One person at 80% of their time |
+| 1.5 | One full-time person + one half-time person |
+| 2.0 | Two people full-time |
+
+When evaluating fit: compare the candidate's available allocation % to the FTE needed. A candidate with 60% available bandwidth cannot cover a 0.8 FTE requirement.
 
 ## Gap Types (Three Distinct Cases)
 

@@ -1,0 +1,24 @@
+[
+  { "project_id": "P001", "skill_id": "S002", "skill_name": "Machine Learning",    "min_proficiency": 4, "headcount_needed": 2.0 },
+  { "project_id": "P001", "skill_id": "S016", "skill_name": "LLM / Generative AI", "min_proficiency": 3, "headcount_needed": 0.5 },
+  { "project_id": "P001", "skill_id": "S001", "skill_name": "Python",              "min_proficiency": 4, "headcount_needed": 2.0 },
+
+  { "project_id": "P002", "skill_id": "S008", "skill_name": "dbt",                "min_proficiency": 4, "headcount_needed": 1.0 },
+  { "project_id": "P002", "skill_id": "S017", "skill_name": "Apache Spark",       "min_proficiency": 3, "headcount_needed": 1.5 },
+  { "project_id": "P002", "skill_id": "S018", "skill_name": "Data Modeling",      "min_proficiency": 3, "headcount_needed": 0.6 },
+
+  { "project_id": "P003", "skill_id": "S005", "skill_name": "React",              "min_proficiency": 4, "headcount_needed": 2.0 },
+  { "project_id": "P003", "skill_id": "S010", "skill_name": "FastAPI",            "min_proficiency": 3, "headcount_needed": 1.5 },
+  { "project_id": "P003", "skill_id": "S006", "skill_name": "PostgreSQL",         "min_proficiency": 3, "headcount_needed": 0.5 },
+
+  { "project_id": "P004", "skill_id": "S007", "skill_name": "Apache Kafka",        "min_proficiency": 4, "headcount_needed": 0.8 },
+  { "project_id": "P004", "skill_id": "S013", "skill_name": "Real-time Systems",   "min_proficiency": 4, "headcount_needed": 0.5 },
+  { "project_id": "P004", "skill_id": "S005", "skill_name": "React",               "min_proficiency": 3, "headcount_needed": 1.0 },
+  { "project_id": "P004", "skill_id": "S019", "skill_name": "Backend Engineering", "min_proficiency": 3, "headcount_needed": 0.7 },
+
+  { "project_id": "P005", "skill_id": "S004", "skill_name": "Kubernetes",          "min_proficiency": 4, "headcount_needed": 1.0 },
+  { "project_id": "P005", "skill_id": "S009", "skill_name": "Terraform",           "min_proficiency": 4, "headcount_needed": 1.0 },
+
+  { "project_id": "P006", "skill_id": "S016", "skill_name": "LLM / Generative AI", "min_proficiency": 3, "headcount_needed": 1.5 },
+  { "project_id": "P006", "skill_id": "S001", "skill_name": "Python",              "min_proficiency": 4, "headcount_needed": 1.5 }
+]

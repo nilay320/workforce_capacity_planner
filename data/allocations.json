@@ -1,0 +1,13 @@
+[
+  { "id": "A001", "employee_id": "E001", "project_id": "P001", "allocation_pct": 80,  "start_date": "2025-11-01", "end_date": "2026-06-30" },
+  { "id": "A002", "employee_id": "E003", "project_id": "P001", "allocation_pct": 60,  "start_date": "2025-11-01", "end_date": "2026-06-30" },
+  { "id": "A003", "employee_id": "E007", "project_id": "P001", "allocation_pct": 50,  "start_date": "2025-11-01", "end_date": "2026-06-30" },
+  { "id": "A004", "employee_id": "E005", "project_id": "P001", "allocation_pct": 30,  "start_date": "2026-01-15", "end_date": "2026-06-30" },
+  { "id": "A005", "employee_id": "E010", "project_id": "P001", "allocation_pct": 20,  "start_date": "2025-11-01", "end_date": "2026-06-30" },
+  { "id": "A006", "employee_id": "E009", "project_id": "P002", "allocation_pct": 100, "start_date": "2026-01-15", "end_date": "2026-08-31" },
+  { "id": "A007", "employee_id": "E008", "project_id": "P002", "allocation_pct": 40,  "start_date": "2026-01-15", "end_date": "2026-08-31" },
+  { "id": "A008", "employee_id": "E002", "project_id": "P002", "allocation_pct": 50,  "start_date": "2026-01-15", "end_date": "2026-08-31" },
+  { "id": "A009", "employee_id": "E006", "project_id": "P005", "allocation_pct": 30,  "start_date": "2026-04-01", "end_date": "2026-07-31" },
+  { "id": "A010", "employee_id": "E004", "project_id": "P005", "allocation_pct": 70,  "start_date": "2026-04-01", "end_date": "2026-07-31" },
+  { "id": "A011", "employee_id": "E011", "project_id": "P005", "allocation_pct": 100, "start_date": "2026-04-01", "end_date": "2026-07-31" }
+]

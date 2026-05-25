@@ -1,0 +1,56 @@
+[
+  {
+    "id": "P001",
+    "name": "AI Recommendation Engine",
+    "status": "active",
+    "priority": "critical",
+    "start_date": "2025-11-01",
+    "end_date": "2026-06-30",
+    "description": "Building a personalized content and product recommendation system for enterprise customers using collaborative filtering and a transformer-based ranking model. Key challenges: real-time feature serving, model retraining on data drift, and A/B testing infrastructure. Requires deep ML engineering, vector similarity search, and latency-sensitive production deployment experience."
+  },
+  {
+    "id": "P002",
+    "name": "Data Platform Migration",
+    "status": "active",
+    "priority": "high",
+    "start_date": "2026-01-15",
+    "end_date": "2026-08-31",
+    "description": "Migrating the data warehouse to a modern lakehouse architecture using dbt and Spark. Includes redesigning the data modeling layer, implementing medallion architecture, and setting up data quality checks. Requires strong data engineering skills and experience with large-scale batch processing."
+  },
+  {
+    "id": "P003",
+    "name": "Customer Portal v3",
+    "status": "pipeline",
+    "priority": "high",
+    "start_date": "2026-07-01",
+    "end_date": "2026-12-31",
+    "description": "Full rebuild of the customer-facing portal with a modern React frontend and FastAPI backend. Includes SSO integration, role-based access, and a new billing dashboard. Requires strong full-stack skills — React on the frontend, Python/FastAPI on the backend, with PostgreSQL for data storage."
+  },
+  {
+    "id": "P004",
+    "name": "Real-time Analytics Dashboard",
+    "status": "pipeline",
+    "priority": "medium",
+    "start_date": "2026-09-01",
+    "end_date": "2027-02-28",
+    "description": "Live operational intelligence product showing key business metrics with sub-second latency. Requires a Kafka-based event streaming backbone, real-time aggregation layer, and a React frontend with WebSocket push updates. Particularly demanding on the infrastructure side — the team needs engineers who understand back-pressure handling, consumer group management, and exactly-once semantics. No team assigned yet."
+  },
+  {
+    "id": "P005",
+    "name": "Security & Compliance Audit",
+    "status": "active",
+    "priority": "critical",
+    "start_date": "2026-04-01",
+    "end_date": "2026-07-31",
+    "description": "SOC 2 Type II compliance audit requiring infrastructure hardening, access control reviews, and security tooling implementation. Requires DevOps expertise in Kubernetes security and Terraform for policy-as-code."
+  },
+  {
+    "id": "P006",
+    "name": "Internal LLM Tooling",
+    "status": "pipeline",
+    "priority": "medium",
+    "start_date": "2026-08-01",
+    "end_date": "2026-12-31",
+    "description": "Suite of developer productivity tools powered by LLMs: a code review assistant, documentation generator, and internal knowledge base Q&A bot. Requires prompt engineering, RAG pipeline experience, and LLM evaluation methodology. Greenfield project with flexibility in technology choices."
+  }
+]
