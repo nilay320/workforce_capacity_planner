@@ -66,9 +66,11 @@ python main.py --question "Who should we assign to P004?"
 
 **Streamlit UI:**
 ```bash
-streamlit run app.py
+python -m streamlit run app.py
 # Opens at http://localhost:8501
 ```
+
+**Live deployment:** [workforce-planner.streamlit.app](https://workforce-planner.streamlit.app)
 
 ---
 
@@ -90,10 +92,10 @@ streamlit run app.py
 │   ├── allocations.json
 │   └── time_off.json
 │
-├── eval/                   # Evaluation test cases
-│   └── test_cases.py
+├── .streamlit/
+│   └── config.toml         # UI theme (colors, font)
 │
-├── .cursor/rules/          # Cursor AI rules (data model + project conventions)
+├── .cursor/rules/          # Cursor AI rules (always applied in this repo)
 ├── requirements.txt
 └── .env.example
 ```
