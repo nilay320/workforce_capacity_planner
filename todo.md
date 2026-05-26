@@ -11,12 +11,14 @@ Update status inline: `[ ]` pending · `[x]` done · `[-]` in progress · `[~]` 
 - [x] Update `app.py` and `eval/test_cases.py` to import `GAP_LABELS`
 - [x] Add Arize eval harness (`eval/evaluate.py`, `eval/test_cases.py`)
 - [x] Write `SPEC.md`
-- [ ] Fix `projects.json`: remove `end_date` from pipeline projects (P003, P004, P006); rename `start_date` → `planned_start_date` for pipeline entries
-- [ ] Update `prompts.py::format_project` to render pipeline projects differently (show `planned_start_date`, omit end date, note dates are targets)
-- [ ] Update system prompt to treat pipeline `planned_start_date` as an estimate — flag date-based risks rather than hard-blocking candidates
-- [ ] Update `.cursor/rules/capstone-data-model.mdc` to reflect the active vs. pipeline date schema split
-- [ ] Re-run eval (new dataset `workforce-planner-eval-v2`) after the above changes
-- [ ] Commit all of the above
+- [x] Fix `projects.json`: remove `end_date` from pipeline projects (P003, P004, P006); rename `start_date` → `planned_start_date` for pipeline entries
+- [x] Update `prompts.py::format_project` to render pipeline projects differently (show `planned_start_date`, omit end date, note dates are targets)
+- [x] Update system prompt to treat pipeline `planned_start_date` as an estimate — flag date-based risks rather than hard-blocking candidates
+- [x] Update `.cursor/rules/capstone-data-model.mdc` to reflect the active vs. pipeline date schema split
+- [x] Fix `app.py` sidebar crash on pipeline projects missing `start_date`/`end_date`
+- [x] Move tech stack and iteration architecture into `SPEC.md` (sections 3–4); slim down Cursor rule
+- [x] Re-run eval (new dataset `workforce-planner-eval-v2`) — no regression confirmed
+- [x] Commit all of the above
 
 ---
 
