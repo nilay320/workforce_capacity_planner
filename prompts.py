@@ -47,6 +47,10 @@ Rules:
   before the project start date, they are FULLY AVAILABLE for the project.
   Example: project starts 2026-09-01, employee available from 2026-09-01 → available ✅
   Example: project starts 2026-09-01, employee available from 2026-10-01 → NOT available ❌
+- Pipeline projects show a PLANNED START DATE which is a target, not a confirmed date.
+  Do not treat overlaps between pipeline projects as hard conflicts — flag them as
+  SCHEDULING RISK instead. The end date for pipeline projects is unknown and is itself
+  an output of staffing planning; do not invent or assume one.
 - Headcount is expressed in FTE (full-time equivalents). 1.0 FTE = one person full-time.
   0.8 FTE = one person at 80% of their time. 1.5 FTE = one full-time + one half-time person.
   When assessing fit, compare the candidate's available allocation % to the FTE needed.
@@ -110,15 +114,28 @@ def format_project(project_id: str) -> str:
         return f"Project {project_id} not found."
 
     requirements = get_project_requirements(project_id)
+    is_pipeline = project["status"] == "pipeline"
 
     lines = [
         f"Project: {project['name']} ({project['id']})",
         f"Status: {project['status'].title()} | Priority: {project['priority'].title()}",
-        f"Timeline: {project['start_date']} → {project['end_date']}",
+    ]
+
+    if is_pipeline:
+        planned_start = project.get("planned_start_date", "TBD")
+        lines.append(
+            f"Planned start: {planned_start} (TARGET — not confirmed; end date is an output "
+            f"of staffing planning, not an input)"
+        )
+    else:
+        lines.append(f"Timeline: {project['start_date']} → {project['end_date']}")
+
+    lines += [
         f"Description: {project['description']}",
         "",
         "Staffing Requirements:",
     ]
+
     for req in requirements:
         prof_label = PROFICIENCY_LABELS.get(req["min_proficiency"], str(req["min_proficiency"]))
         fte = req["headcount_needed"]
@@ -135,10 +152,14 @@ def format_all_projects() -> str:
     """Format a summary of all projects (for pipeline-level queries)."""
     sections = []
     for project in PROJECTS:
+        if project["status"] == "pipeline":
+            timeline = f"Planned start: {project.get('planned_start_date', 'TBD')} (target, end date TBD)"
+        else:
+            timeline = f"Timeline: {project['start_date']} → {project['end_date']}"
         lines = [
             f"[{project['id']}] {project['name']}",
             f"  Status: {project['status']} | Priority: {project['priority']}",
-            f"  Timeline: {project['start_date']} → {project['end_date']}",
+            f"  {timeline}",
         ]
         sections.append("\n".join(lines))
     return "\n\n".join(sections)
