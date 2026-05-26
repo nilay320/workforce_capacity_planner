@@ -170,12 +170,16 @@ with st.sidebar:
         priority_color = {"critical": "🔴", "high": "🟠", "medium": "🟡", "low": "🟢"}.get(
             project["priority"], "⚪"
         )
+        if project["status"] == "pipeline":
+            timeline = f'🎯 Target start: {project.get("planned_start_date", "TBD")} (not confirmed)'
+        else:
+            timeline = f'📅 {project["start_date"]} → {project["end_date"]}'
         st.markdown(
             f'<div class="project-card">'
             f'<strong>{project["name"]}</strong><br>'
             f'Status: <strong>{project["status"].title()}</strong> &nbsp;·&nbsp; '
             f'Priority: {priority_color} {project["priority"].title()}<br>'
-            f'📅 {project["start_date"]} → {project["end_date"]}'
+            f'{timeline}'
             f'</div>',
             unsafe_allow_html=True,
         )
