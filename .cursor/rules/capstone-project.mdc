@@ -26,30 +26,12 @@ VP of Engineering and team leads at tech companies. Questions are natural langua
 | 2 | Workflow Agent + Retrieval | ChromaDB (employee profiles) + SQLite (allocations/projects) | Reactive — one question at a time |
 | 3 | Autonomous Agent | Goal decomposition, tool-calling loop, episodic memory | Higher latency and cost |
 
-## Tech Stack
+## Tech Stack & Architecture
 
-- **Orchestration**: LangGraph (StateGraph + TypedDict state)
-- **LLM**: `gpt-4o-mini` (default), `gpt-4o` for complex planning synthesis
-- **Embeddings**: `text-embedding-3-small`
-- **Vector store**: ChromaDB (persistent on disk)
-- **Structured data**: SQLite (queried via LangChain `create_sql_query_chain`)
-- **Frontend**: Streamlit (demo UI)
+See `SPEC.md` sections 3 (Tech Stack) and 4 (Iteration Progression) for the authoritative reference.
 
-## Query Classification (4 Types + Out of Scope)
-
-| Type | Example |
-|---|---|
-| `staffing_gap` | "Where are we short-staffed for Q4?" |
-| `skill_match` | "Who has Kafka experience and is available?" |
-| `headcount_forecast` | "How many engineers do we need for a 6-month rebuild?" |
-| `capacity_check` | "Is anyone over-allocated right now?" |
-| `out_of_scope` | "Can you write a job description?" → graceful rejection |
-
-## Routing Logic (Iteration 2+)
-
-- `skill_match` and freeform `staffing_gap` → ChromaDB (semantic search on employee profiles)
-- `capacity_check` and `headcount_forecast` → SQLite (aggregations on allocations/projects)
-- Questions needing both → hybrid (ChromaDB candidates → SQL availability filter)
+**Current stack (v0):** LangGraph · LangChain · `gpt-4o-mini` · Streamlit · Arize  
+**Iteration 2+:** adds ChromaDB (profiles) · SQLite (allocations) · query routing
 
 ## File Structure
 

@@ -33,7 +33,47 @@ Engineering leaders (VPs, team leads) at tech companies lack real-time, queryabl
 
 ---
 
-## 3. Data Model Contract
+## 3. Tech Stack
+
+| Layer | Technology | Notes |
+|---|---|---|
+| Orchestration | LangGraph (`StateGraph` + `TypedDict` state) | Defines the node graph; stateful across nodes |
+| LLM | `gpt-4o-mini` (default) | Use `gpt-4o` for complex multi-project synthesis |
+| Embeddings | `text-embedding-3-small` | For ChromaDB semantic search (iteration 2+) |
+| Vector store | ChromaDB (persistent on disk) | Employee profile + project description retrieval (iteration 2+) |
+| Structured data | SQLite via LangChain `create_sql_query_chain` | Allocation and capacity queries (iteration 2+) |
+| Frontend | Streamlit | Demo UI; deployed on Streamlit Community Cloud |
+| Evaluation | Arize + `arize-phoenix` | LLM-as-judge + code-based evaluators |
+
+---
+
+## 4. Iteration Progression
+
+| Iteration | Paradigm | Key addition | Key limitation |
+|---|---|---|---|
+| v0 (current) | Context stuffing | All data loaded into LLM context, single call | Doesn't scale beyond small dataset |
+| Iteration 2 | Workflow Agent + Retrieval | ChromaDB (profiles) + SQLite (structured data) + query routing | Reactive — one question at a time |
+| Iteration 3 | Autonomous Agent | Goal decomposition, tool-calling loop, episodic memory | Higher latency and cost |
+
+### Query classification (iteration 2+)
+
+| Type | Example |
+|---|---|
+| `staffing_gap` | "Where are we short-staffed for Q4?" |
+| `skill_match` | "Who has Kafka experience and is available?" |
+| `headcount_forecast` | "How many engineers do we need for a 6-month rebuild?" |
+| `capacity_check` | "Is anyone over-allocated right now?" |
+| `out_of_scope` | "Can you write a job description?" → graceful rejection |
+
+### Routing logic (iteration 2+)
+
+- `skill_match` and freeform `staffing_gap` → ChromaDB (semantic search on employee profiles)
+- `capacity_check` and `headcount_forecast` → SQLite (aggregations on allocations/projects)
+- Questions needing both → hybrid (ChromaDB candidates → SQL availability filter)
+
+---
+
+## 5. Data Model Contract
 
 All data lives in `data/*.json`. This section defines the canonical schema and semantics. Code must match this exactly — do not add fields without updating this spec.
 
@@ -139,7 +179,7 @@ type            string   — e.g. "parental leave", "sabbatical", "PTO"
 
 ---
 
-## 4. Proficiency Scale
+## 6. Proficiency Scale
 
 | Level | Label | Meaning |
 |---|---|---|
@@ -165,7 +205,7 @@ A candidate with 60% available bandwidth cannot cover a 0.8 FTE requirement.
 
 ---
 
-## 5. Gap Type Taxonomy
+## 7. Gap Type Taxonomy
 
 Every skill requirement in a response must be classified with exactly one label. Labels are defined as constants in `prompts.py` (`GAP_LABELS`) — do not hardcode the strings elsewhere.
 
@@ -184,7 +224,7 @@ Every skill requirement in a response must be classified with exactly one label.
 
 ---
 
-## 6. Availability Computation
+## 8. Availability Computation
 
 `available_from` for an employee = the day after the latest end date across all their active allocations and time-off entries.
 
@@ -201,7 +241,7 @@ The LLM must not perform its own date arithmetic — it reads the pre-computed `
 
 ---
 
-## 7. LangGraph Workflow Contract (v0)
+## 9. LangGraph Workflow Contract (v0)
 
 ```
 Input:  { question: str, project_id: str | None }
@@ -230,7 +270,7 @@ Output: { answer: str }
 
 ---
 
-## 8. System Prompt Contract
+## 10. System Prompt Contract
 
 The system prompt (`prompts.py::SYSTEM_PROMPT`) enforces:
 
@@ -245,7 +285,7 @@ The system prompt (`prompts.py::SYSTEM_PROMPT`) enforces:
 
 ---
 
-## 9. UI Contract (Streamlit)
+## 11. UI Contract (Streamlit)
 
 **Entry point:** `app.py`, served via `python -m streamlit run app.py`
 
@@ -264,7 +304,7 @@ The system prompt (`prompts.py::SYSTEM_PROMPT`) enforces:
 
 ---
 
-## 10. Eval Contract
+## 12. Eval Contract
 
 Harness: `eval/evaluate.py`. Test cases: `eval/test_cases.py`.
 
@@ -283,7 +323,7 @@ Harness: `eval/evaluate.py`. Test cases: `eval/test_cases.py`.
 
 ---
 
-## 11. What This Spec Does Not Cover
+## 13. What This Spec Does Not Cover
 
 These are intentionally deferred to future iterations:
 
