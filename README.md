@@ -131,21 +131,30 @@ The `eval/` directory contains an Arize experiment harness with 10 test cases an
 | `gap_label_recall` | Code-based | Are the correct gap type labels present? |
 | `name_recall` | Code-based | Are the expected employee names mentioned? |
 
-**Baseline results (v1 dataset):** answer_relevance 1.00 · specificity 1.00 · gap_label_recall 0.80 · name_recall 1.00
+**Baseline results (v2 dataset):** answer_relevance 1.00 · specificity 1.00 · gap_label_recall 0.80 · name_recall 1.00
 
 **Run evals** (requires `ARIZE_API_KEY` and `ARIZE_SPACE_ID` in `.env`):
 ```bash
 # First run — creates a new Arize dataset from eval/test_cases.py
-python eval/evaluate.py --dataset-name workforce-planner-eval-v1
+python eval/evaluate.py --dataset-name workforce-planner-eval-v2
 
 # Re-run against the same dataset (new experiment, same rows)
-python eval/evaluate.py --dataset-name workforce-planner-eval-v1 --reuse-dataset
+python eval/evaluate.py --dataset-name workforce-planner-eval-v2 --reuse-dataset
 
 # Changed test case expectations? Use a new dataset version
-python eval/evaluate.py --dataset-name workforce-planner-eval-v2
+python eval/evaluate.py --dataset-name workforce-planner-eval-v3
 ```
 
 When using `--reuse-dataset`, expected labels/names come from the Arize-stored rows, not the local `test_cases.py`. Use a new versioned dataset name whenever you update expectations.
+
+---
+
+## Spec & backlog
+
+| File | Purpose |
+|---|---|
+| `SPEC.md` | Authoritative system spec — data model contracts, gap taxonomy, node contracts, eval floors. Update this before changing behavior. |
+| `todo.md` | Iteration backlog — v0 fixes, iteration 2 (retrieval), iteration 3 (autonomous agent). |
 
 ---
 

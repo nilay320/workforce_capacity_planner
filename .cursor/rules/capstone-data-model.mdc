@@ -60,11 +60,16 @@ Always distinguish these in LLM output — they require different recommendation
 employees           id, name, role, department, level, employment_type, start_date
 skills              id, name, category (technical/domain/leadership)
 employee_skills     employee_id, skill_id, proficiency (1-5), years_exp
-projects            id, name, status (active/pipeline/completed), priority, start_date, end_date
-project_requirements project_id, skill_id, min_proficiency, headcount_needed, start_date, end_date
+projects (active)   id, name, status="active", priority, start_date, end_date
+projects (pipeline) id, name, status="pipeline", priority, planned_start_date  ← no end_date
+projects (completed) id, name, status="completed", priority, start_date, end_date
+project_requirements project_id, skill_id, min_proficiency, headcount_needed
 allocations         id, employee_id, project_id, allocation_pct, start_date, end_date
 time_off            employee_id, start_date, end_date, type
 ```
+
+**Pipeline project date rule:** Pipeline projects have `planned_start_date` (a target) but NO `end_date`.
+The end date is an *output* of staffing planning, not an input. Do not invent or assume end dates for pipeline projects.
 
 ## Vector Store Documents
 

@@ -22,8 +22,7 @@
     "name": "Customer Portal v3",
     "status": "pipeline",
     "priority": "high",
-    "start_date": "2026-07-01",
-    "end_date": "2026-12-31",
+    "planned_start_date": "2026-07-01",
     "description": "Full rebuild of the customer-facing portal with a modern React frontend and FastAPI backend. Includes SSO integration, role-based access, and a new billing dashboard. Requires strong full-stack skills — React on the frontend, Python/FastAPI on the backend, with PostgreSQL for data storage."
   },
   {
@@ -31,8 +30,7 @@
     "name": "Real-time Analytics Dashboard",
     "status": "pipeline",
     "priority": "medium",
-    "start_date": "2026-09-01",
-    "end_date": "2027-02-28",
+    "planned_start_date": "2026-09-01",
     "description": "Live operational intelligence product showing key business metrics with sub-second latency. Requires a Kafka-based event streaming backbone, real-time aggregation layer, and a React frontend with WebSocket push updates. Particularly demanding on the infrastructure side — the team needs engineers who understand back-pressure handling, consumer group management, and exactly-once semantics. No team assigned yet."
   },
   {
@@ -49,8 +47,7 @@
     "name": "Internal LLM Tooling",
     "status": "pipeline",
     "priority": "medium",
-    "start_date": "2026-08-01",
-    "end_date": "2026-12-31",
+    "planned_start_date": "2026-08-01",
     "description": "Suite of developer productivity tools powered by LLMs: a code review assistant, documentation generator, and internal knowledge base Q&A bot. Requires prompt engineering, RAG pipeline experience, and LLM evaluation methodology. Greenfield project with flexibility in technology choices."
   }
 ]
