@@ -1,0 +1,65 @@
+---
+config:
+  layout: elk
+  theme: default
+---
+%%{init: {"htmlLabels": true, "securityLevel": "loose"}}%%
+flowchart LR
+    UserGoal[<b>USER GOAL</b>]
+    LoadMemory[<b>LOAD MEMORY</b>---
+    Past staffing decisions
+    Known risks
+    Prior scenario outcomes]
+    GoalDecomp[<b>GOAL DECOMPOSER</b>]
+    PlannerAgent[<b>PLANNER AGENT LOOP</b>---
+    Chooses tools
+    Reasons over results
+    Tracks constraints]
+    WorkforceTools[<b>WORKFORCE TOOL REGISTRY</b>---
+    RAG retrieval
+    Structured queries
+    Availability check
+    FTE gap calculation
+    Scenario modeling]
+    RiskReview[<b>RISK REVIEW</b>---
+    Coverage risk
+    Availability gap
+    Scheduling risk
+    Double assignment]
+    FinalPlan[<b>FINAL STAFFING PLAN</b>---
+    Recommended team
+    Tradeoffs
+    Risks
+    Next actions]
+    AgentEvals[<b>AGENT EVALS</b>---
+    Tool accuracy
+    Task completion
+    Constraint satisfaction
+    Risk identification]
+    
+    UserGoal --> LoadMemory
+    LoadMemory --> GoalDecomp
+    GoalDecomp --> PlannerAgent
+    PlannerAgent --> WorkforceTools
+    WorkforceTools --> PlannerAgent
+    PlannerAgent --> RiskReview
+    RiskReview --> FinalPlan
+    FinalPlan --> AgentEvals
+    
+    classDef userGoal stroke:#38bdf8,fill:#f0f9ff
+    classDef memory stroke:#94a3b8,fill:#f1f5f9
+    classDef decomposer stroke:#a78bfa,fill:#f5f3ff
+    classDef planner stroke:#a78bfa,fill:#f5f3ff
+    classDef tools stroke:#4ade80,fill:#f0fdf4
+    classDef risk stroke:#fb923c,fill:#fff7ed
+    classDef finalPlan stroke:#e879f9,fill:#fdf4ff
+    classDef evals stroke:#22d3ee,fill:#ecfeff
+    
+    class UserGoal userGoal
+    class LoadMemory memory
+    class GoalDecomp decomposer
+    class PlannerAgent planner
+    class WorkforceTools tools
+    class RiskReview risk
+    class FinalPlan finalPlan
+    class AgentEvals evals

@@ -1,0 +1,63 @@
+%%{init: {"htmlLabels": true, "securityLevel": "loose"}}%%
+flowchart LR
+    userQ["<b>USER QUESTION</b> ---
+Natural language staffing request
+(Streamlit UI / CLI)"]
+
+    classify["<b>CLASSIFY_QUERY NODE</b> ---
+LangGraph
+Routes:
+staffing · skill · availability
+gap · scenario · out‑of‑scope"]
+
+    route["<b>EVIDENCE ROUTING</b> ---
+Selects RAG, SQL, or hybrid path"]
+
+    subgraph evidenceLayer["<b>EVIDENCE LAYER</b>"]
+        rag["<b>CHROMADB / RAG</b> ---
+Narrative context
+(Employee bios, projects, notes, Jira)"]
+
+        sql["<b>SQLITE / STRUCTURED QUERY</b> ---
+Exact workforce facts
+(Skills, allocations, FTE, dates)"]
+    end
+
+    synth["<b>SYNTHESIS NODE</b> ---
+LLM uses RAG + SQL evidence
+to generate recommendation"]
+
+    answer["<b>STRUCTURED STAFFING ANSWER</b> ---
+Recommendation
+Gap labels · Risks · Citations"]
+
+    evals["<b>EXPANDED EVALS</b> ---
+Query accuracy · Recall
+Fact accuracy · Answer quality"]
+
+    %% Main flow
+    userQ --> classify --> route
+    synth --> answer --> evals
+
+    %% Evidence connections
+    route --> rag --> synth
+    route --> sql --> synth
+
+    %% Styles
+    classDef userStyle stroke:#3b82f6,fill:#dbeafe
+    classDef langGraphStyle stroke:#a78bfa,fill:#f5f3ff
+    classDef routeStyle stroke:#c4b5fd,fill:#ede9fe
+    classDef ragStyle stroke:#4ade80,fill:#f0fdf4
+    classDef sqlStyle stroke:#2dd4bf,fill:#f0fdfa
+    classDef answerStyle stroke:#ec4899,fill:#fce7f3
+    classDef evalsStyle stroke:#06b6d4,fill:#ecfeff
+    classDef evidenceLayerStyle stroke:#c4b5fd,fill:#faf5ff,color:#1e1b4b
+
+    class userQ userStyle
+    class classify,synth langGraphStyle
+    class route routeStyle
+    class rag ragStyle
+    class sql sqlStyle
+    class answer answerStyle
+    class evals evalsStyle
+    class evidenceLayer evidenceLayerStyle
