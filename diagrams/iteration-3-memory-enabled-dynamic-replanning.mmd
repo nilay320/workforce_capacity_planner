@@ -5,44 +5,65 @@ config:
 ---
 flowchart LR
     title["<b>Iteration 3 — Memory-Enabled Dynamic Replanning</b>"]
-    
+
     changeEvent["<b>CHANGE EVENT</b><br/><b>USER GOAL</b><br/>---<br/>P005 slips 6 weeks<br/>Engineer on leave<br/>Scope/priority changes"]
     loadMemory["<b>LOAD MEMORY</b><br/>---<br/>Prior staffing plan<br/>Past decisions<br/>Known constraints<br/>Resolved risks"]
-    impactAnalysis["<b>IMPACT ANALYSIS</b><br/>---<br/>Affected people<br/>Affected projects<br/>New conflicts<br/>Timing changes"]
+
     replanningAgent["<b>REPLANNING AGENT LOOP</b><br/>---<br/>Tool-using agent<br/>Models scenarios<br/>Compares tradeoffs<br/>Tracks constraints"]
-    workforceTools["<b>WORKFORCE TOOL LAYER</b><br/>---<br/>RAG retrieval<br/>Structured queries<br/>Availability check<br/>FTE gap calculation<br/>Scenario modeling"]
-    riskReview["<b>RISK REVIEW</b><br/>---<br/>Coverage risk<br/>Availability gap<br/>Scheduling risk<br/>Double assignment"]
-    updatedPlan["<b>UPDATED STAFFING PLAN</b><br/>---<br/>Revised team<br/>Tradeoffs<br/>Risks<br/>Next actions"]
+
+    workforceTools["<b>WORKFORCE TOOLS</b><br/>---<br/>RAG retrieval<br/>Structured queries<br/>Availability check<br/>FTE gap calculation<br/>Scenario modeling"]
+
+    impactAnalysis["<b>IMPACT ANALYSIS TOOL</b><br/>---<br/>Affected people<br/>Affected projects<br/>New conflicts<br/>Timing changes"]
+
+    riskReview["<b>RISK REVIEW TOOL</b><br/>---<br/>Coverage risk<br/>Availability gap<br/>Scheduling risk<br/>Double assignment"]
+
+    updatedPlan["<b>PROPOSED UPDATED STAFFING PLAN</b><br/>---<br/>Revised team<br/>Tradeoffs<br/>Risks<br/>Next actions"]
+
+    humanApproval["<b>HUMAN-IN-THE-LOOP APPROVAL</b><br/>---<br/>Approve<br/>Reject<br/>Request changes"]
+
+    finalPlan["<b>FINAL STAFFING PLAN</b><br/>---<br/>Approved actions<br/>Updated staffing plan<br/>Execution-ready changes"]
+
     agentEvals["<b>AGENT EVALS</b><br/>---<br/>Tool accuracy<br/>Task completion<br/>Constraint satisfaction<br/>Risk identification"]
-    
+
     %% Main flow
     changeEvent --> loadMemory
-    loadMemory --> impactAnalysis
-    impactAnalysis --> replanningAgent
-    replanningAgent --> riskReview
-    riskReview --> updatedPlan
-    updatedPlan --> agentEvals
-    
-    %% Supporting tool loop
+    loadMemory --> replanningAgent
+
+    %% Tool calls owned by replanning agent
     replanningAgent <--> workforceTools
-    
+    replanningAgent <--> impactAnalysis
+    replanningAgent <--> riskReview
+
+    %% Plan and approval flow
+    replanningAgent --> updatedPlan
+    updatedPlan --> humanApproval
+    humanApproval -->|Approved| finalPlan
+    humanApproval -->|Changes requested| replanningAgent
+
+    %% Evaluation
+    finalPlan --> agentEvals
+
     %% Styling
     classDef changeEventStyle stroke:#3b82f6,fill:#eff6ff
     classDef memoryStyle stroke:#94a3b8,fill:#f1f5f9
-    classDef impactStyle stroke:#a78bfa,fill:#f5f3ff
     classDef agentStyle stroke:#a78bfa,fill:#f5f3ff
     classDef toolStyle stroke:#4ade80,fill:#f0fdf4
+    classDef impactStyle stroke:#a78bfa,fill:#f5f3ff
     classDef riskStyle stroke:#fb923c,fill:#fff7ed
     classDef planStyle stroke:#f472b6,fill:#fdf2f8
+    classDef approvalStyle stroke:#ef4444,fill:#fef2f2
+    classDef finalPlanStyle stroke:#16a34a,fill:#f0fdf4
     classDef evalStyle stroke:#22d3ee,fill:#ecfeff
     classDef titleStyle stroke:#none,fill:#none,color:#000,font-weight:bold,font-size:16px
-    
+
     class changeEvent changeEventStyle
     class loadMemory memoryStyle
-    class impactAnalysis impactStyle
     class replanningAgent agentStyle
     class workforceTools toolStyle
+    class impactAnalysis impactStyle
     class riskReview riskStyle
     class updatedPlan planStyle
+    class humanApproval approvalStyle
+    class finalPlan finalPlanStyle
     class agentEvals evalStyle
     class title titleStyle
