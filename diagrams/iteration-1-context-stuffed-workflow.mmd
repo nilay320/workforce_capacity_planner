@@ -1,20 +1,24 @@
 %%{init: { "htmlLabels": true, "securityLevel": "loose" } }%%
 flowchart LR
-    UserQ["<b>USER QUESTION</b> ---
-Natural language staffing question
-Streamlit UI / CLI"] --> LoadCtx["<b>LOAD_CONTEXT NODE</b> LangGraph
+    UserQ["<b>USER QUESTION</b>
+(Streamlit UI / CLI)
+---
+Natural language staffing question"] --> LoadCtx["<b>LOAD_CONTEXT NODE</b>
+(LangGraph)
 ---
 Formats project + roster context
 Precomputes availability"]
-    MockOrg["<b>MOCK ORG DATASET</b> ---
-JSON files
+    Org["<b>ORG DATASET</b>
+(JSON files)
+---
 Employees, skills, projects
 Allocations, time off"] --> LoadCtx
-    LoadCtx --> Recommend["<b>RECOMMEND NODE</b> LangGraph
+    LoadCtx --> Recommend["<b>RECOMMEND NODE</b>
+(LLM - gpt-4o-mini)
 ---
-gpt-4o-mini
 Generates staffing recommendation"]
-    PromptContract["<b>PROMPT CONTRACT</b>
+    PromptContract["<b>SYSTEM PROMPT</b>
+(LangGraph)
 ---
 FTE semantics
 Availability rules
@@ -27,13 +31,14 @@ AVAILABILITY GAP
 COVERAGE RISK
 TRUE SKILL GAP"] --> Recommend
     Recommend --> StaffAnswer["<b>STRUCTURED STAFFING ANSWER</b>
+(LLM - gpt-4o-mini)
 ---
 Recommended team
 Gap labels
 Risks"]
     StaffAnswer --> Evaluation["<b>EVALUATION</b>
+(Arize)
 ---
-Arize
 Answer relevance
 Specificity
 Gap label recall
@@ -41,15 +46,15 @@ Name recall"]
 
      UserQ:::userStyle
      LoadCtx:::langGraphStyle
-     MockOrg:::mockOrgStyle
+     Org:::OrgStyle
      Recommend:::langGraphStyle
      PromptContract:::promptStyle
      StaffAnswer:::answerStyle
      Evaluation:::evalStyle
     classDef userStyle fill:#DBEAFE,stroke:#2563EB,color:#0F172A
     classDef langGraphStyle fill:#EDE9FE,stroke:#7C3AED,color:#1E1B4B
-    classDef mockOrgStyle fill:#DCFCE7,stroke:#16A34A,color:#052E16
+    classDef OrgStyle fill:#DCFCE7,stroke:#16A34A,color:#052E16
     classDef promptStyle fill:#FEF3C7,stroke:#D97706,color:#451A03
     classDef answerStyle fill:#FCE7F3,stroke:#DB2777,color:#500724
     classDef evalStyle fill:#E0F2FE,stroke:#0284C7,color:#082F49
-    style MockOrg color:#000000
+    style Org color:#000000
